@@ -80,6 +80,7 @@
             </catalog>
             <checkout>
                 <rewrite>
+                    <cart_crosssell>OrganicInternet_SimpleConfigurableProducts_Checkout_Block_Cart_Crosssell</cart_crosssell>
                     <cart_item_renderer>OrganicInternet_SimpleConfigurableProducts_Checkout_Block_Cart_Item_Renderer</cart_item_renderer>
                 </rewrite>
             </checkout>
