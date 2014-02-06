@@ -45,6 +45,7 @@ class OrganicInternet_SimpleConfigurableProducts_Checkout_Block_Cart_Crosssell
      * Rewrite to consider 'cpid' as items in cart to have its assigned crosssells shown.
      *
      * @return array
+     * @todo Add compatibility to Magento CE <= 1.5
      */
     protected function _getCartProductIds()
     {
