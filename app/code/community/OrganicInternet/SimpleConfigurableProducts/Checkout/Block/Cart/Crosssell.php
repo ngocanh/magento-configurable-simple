@@ -42,6 +42,8 @@ class OrganicInternet_SimpleConfigurableProducts_Checkout_Block_Cart_Crosssell
     /**
      * Get ids of products that are in cart
      *
+     * Rewrite to consider 'cpid' as items in cart to have its assigned crosssells shown.
+     *
      * @return array
      */
     protected function _getCartProductIds()
@@ -51,7 +53,14 @@ class OrganicInternet_SimpleConfigurableProducts_Checkout_Block_Cart_Crosssell
             $ids = array();
             foreach ($this->getQuote()->getAllItems() as $item) {
                 /** @var $item Mage_Sales_Model_Quote_Item */
-                $infoBuyRequest = $item->getOptionByCode('info_buyRequest');
+                // modification start
+                $itemOption = $item->getOptionByCode('info_buyRequest');
+                $infoBuyRequest = unserialize($itemOption->getValue());
+
+                if (!empty($infoBuyRequest['cpid'])) {
+                    $ids[] = $infoBuyRequest['cpid'];
+                }
+                // modification end
                 if ($product = $item->getProduct()) {
                     $ids[] = $product->getId();
                 }
